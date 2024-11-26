@@ -42,25 +42,26 @@
         app:layout_constraintEnd_toEndOf="@+id/textView5"
         app:layout_constraintStart_toStartOf="@+id/textView5"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
     <EditText
         android:id="@+id/signUpName"
         android:layout_width="325dp"
         android:layout_height="60dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/edit_text_shape"
-        android:drawableStart="@drawable/email_icon"
+        android:drawableStart="@drawable/profile_icon"
         android:drawablePadding="15dp"
         android:elevation="5dp"
         android:ems="10"
         android:fontFamily="@font/lato_regular"
-        android:hint="@string/name"
+        android:hint="@string/full_name"
         android:importantForAutofill="no"
         android:inputType="text"
         android:paddingStart="15dp"
         app:layout_constraintEnd_toEndOf="@+id/textView8"
         app:layout_constraintStart_toStartOf="@+id/textView8"
         app:layout_constraintTop_toBottomOf="@+id/textView8"
-        tools:ignore="RtlSymmetry" />
+        tools:ignore="RtlSymmetry,TextContrastCheck" />
     <EditText
         android:id="@+id/signUpEmail"
         android:layout_width="325dp"
@@ -82,7 +83,7 @@
         tools:ignore="RtlSymmetry" />
 
     <EditText
-        android:id="@+id/SignUpPassword"
+        android:id="@+id/signUpPassword"
         android:layout_width="325dp"
         android:layout_height="60dp"
         android:layout_marginTop="16dp"
@@ -109,9 +110,9 @@
         android:layout_marginTop="16dp"
         android:fontFamily="@font/lato_regular"
         android:text="@string/or"
-        app:layout_constraintEnd_toEndOf="@+id/SignUpPassword"
-        app:layout_constraintStart_toStartOf="@+id/SignUpPassword"
-        app:layout_constraintTop_toBottomOf="@+id/SignUpPassword" />
+        app:layout_constraintEnd_toEndOf="@+id/signUpPassword"
+        app:layout_constraintStart_toStartOf="@+id/signUpPassword"
+        app:layout_constraintTop_toBottomOf="@+id/signUpPassword" />
 
     <TextView
         android:id="@+id/textView10"
@@ -129,7 +130,7 @@
         android:id="@+id/signUpGoogleButton"
         android:layout_width="152dp"
         android:layout_height="60dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/white_button_shape"
         android:drawableStart="@drawable/google_icon"
         android:fontFamily="@font/lato_regular"
@@ -149,7 +150,7 @@
         android:id="@+id/signUpButton"
         android:layout_width="152dp"
         android:layout_height="60dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/green_button_shape"
         android:fontFamily="@font/lato_regular"
         android:text="@string/sign_up"
@@ -180,21 +181,20 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/loginTextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
+        android:focusable="true"
         android:fontFamily="@font/lato_bold"
         android:gravity="center"
         android:minHeight="48dp"
-        android:text="@string/already_has_a_account"
+        android:text="@string/already_have_a_account"
         android:textColor="@color/green_text"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="@+id/signUpButton"
         app:layout_constraintStart_toStartOf="@+id/signUpButton"
         app:layout_constraintTop_toBottomOf="@+id/signUpButton"
-        app:layout_constraintBottom_toTopOf="@+id/textView12"
-        tools:ignore="TextContrastCheck"
-        android:focusable="true" />
+        tools:ignore="TextContrastCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

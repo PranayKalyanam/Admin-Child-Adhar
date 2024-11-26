@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black">#FF000000</color>
+    <color name="light_black">#C1222222</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="light_silver">#E4E4E4</color>
+    <color name="silver">#F5F4F4</color>
+    <color name="blue_start">#2655CD</color>
+    <color name="blue_mid">#114BC6</color>
+    <color name="blue_end">#071DB3</color>
+    <color name="green_text">#43A047</color>
+    <color name="green_hover">#E489E98D</color>
+    <color name="light_green">#C4A5D5A6</color>
 </resources>

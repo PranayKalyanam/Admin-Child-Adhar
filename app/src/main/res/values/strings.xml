@@ -54,4 +54,8 @@
     <string name="google">Google</string>
     <string name="login">Login</string>
     <string name="don_t_have_account_n_create_account">don\'t have account \n create account</string>
+    <string name="create_your_account">Create Your account</string>
+    <string name="name">Name</string>
+    <string name="already_has_a_account">already has a account?</string>
+    <string name="sign_up">Sign Up</string>
 </resources>

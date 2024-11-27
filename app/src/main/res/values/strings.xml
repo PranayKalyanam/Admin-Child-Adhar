@@ -10,7 +10,7 @@
     <string name="profile">Profile</string>
     <string name="customer_care">Customer Care</string>
     <string name="profile_photo">profile photo</string>
-    <string name="first_name">First Name</string>
+    <string name="first_name">First Name/Child Name</string>
     <string name="pranay">Pranay</string>
     <string name="last_name">Surname Name</string>
     <string name="kalyanam">Kalyanam</string>
@@ -25,7 +25,7 @@
     <string name="memories_pictures">memories pictures</string>
     <string name="add">Add</string>
     <string name="children_details">Children Details</string>
-    <string name="see_details">See Details</string>
+    <string name="edit_details">Edit Details</string>
     <string name="family_details">Family Details</string>
     <string name="family_image">family image</string>
     <string name="child_image">child image</string>
@@ -38,12 +38,13 @@
     <string name="date_of_birth">Date of Birth \n (dd/mm/yy)</string>
     <string name="_07_05_2003">07/05/2003</string>
     <string name="place_of_birth">Place of Birth</string>
-    <string name="jagtial">Jagtial</string>
+    <string name="jagtial">Jagtial, Telangana</string>
     <string name="kalyanam_anjaiah">Kalyanam Anjaiah</string>
     <string name="kalyanam_shylaja">Kalyanam Shylaja</string>
     <string name="gender">Gender</string>
     <string name="male">Male</string>
     <string name="permanent_address_of_parents">Permanent Address \n of Parents</string>
+    <string name="permanent_address">Permanent Address</string>
     <string name="time_of_birth">Time of Birth</string>
     <string name="_13_23">13:23</string>
     <string name="login_to_your_account">Login to Your Account</string>
@@ -59,4 +60,8 @@
     <string name="already_have_a_account">already have a account?</string>
     <string name="sign_up">Sign Up</string>
     <string name="full_name">Full Name</string>
+    <string name="disability">Disability</string>
+    <string name="eye_blindness">Eye blindness</string>
+    <string name="_63026">63026*****</string>
+    <string name="child_name">Child Name</string>
 </resources>

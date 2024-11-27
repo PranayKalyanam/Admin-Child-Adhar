@@ -132,7 +132,7 @@ class SignUpActivity : AppCompatActivity() {
         email = binding.signUpEmail.text.toString()
         password = binding.signUpPassword.text.toString()
 
-        val userModel = UserModel(userName, email, password, null, null, null )
+        val userModel = UserModel(userName, email, password, null )
         if(user != null){
             //get a unique  id before saving
             val userId = user.uid

@@ -6,17 +6,18 @@
     android:layout_height="match_parent"
     android:background="@color/silver"
     tools:context=".AddChildrenActivity">
+
     <androidx.cardview.widget.CardView
         android:id="@+id/appTitleCardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardElevation="1dp"
-        app:cardBackgroundColor="@color/silver"
         android:layout_marginTop="0dp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:cardBackgroundColor="@color/silver"
+        app:cardElevation="1dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        >
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -38,8 +39,8 @@
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:layout_marginEnd="16dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
                 android:layout_marginBottom="8dp"
                 android:background="@color/white"
                 app:cardCornerRadius="30dp"
@@ -85,9 +86,10 @@
 
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/appCompatButton"
+        android:id="@+id/addChildButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/add_button_shape"
@@ -97,35 +99,57 @@
         android:gravity="center"
         android:padding="4dp"
         android:text="@string/add"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appTitleCardView" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textView11"
+        app:layout_constraintTop_toBottomOf="@+id/appTitleCardView"
+        tools:ignore="TextContrastCheck" />
 
     <TextView
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/yeonsung_regular"
-        android:text="Click here to add your child"
+        android:text="@string/click_here_to_add_your_child"
         android:textColor="@color/green_text"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/appCompatButton"
-        app:layout_constraintEnd_toStartOf="@+id/appCompatButton"
+        app:layout_constraintBottom_toBottomOf="@+id/addChildButton"
+        app:layout_constraintEnd_toStartOf="@+id/addChildButton"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/appCompatButton" />
+        app:layout_constraintTop_toTopOf="@+id/addChildButton" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/addChildDetailsRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
-        tools:listitem="@layout/child_item_card"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appCompatButton" />
+        app:layout_constraintTop_toBottomOf="@+id/addChildButton"
+        tools:listitem="@layout/child_item_card" />
+
+    <TextView
+        android:id="@+id/noInfoText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato_bold"
+        android:rotation="0"
+        android:rotationY="10"
+        android:text="@string/no_information_is_n_currently_available"
+        android:textAlignment="center"
+        android:textColor="@color/gray"
+        android:textSize="26sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/appTitleCardView" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

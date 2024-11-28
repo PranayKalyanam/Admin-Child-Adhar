@@ -64,4 +64,11 @@
     <string name="eye_blindness">Eye blindness</string>
     <string name="_63026">63026*****</string>
     <string name="child_name">Child Name</string>
+    <string name="click_here_to_add_your_child">Click here to add your child</string>
+    <string name="log_out">Log Out</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="please_register_child_fingerprint_here">Please register child fingerprint here</string>
+    <string name="fingerprint_image">fingerprint image</string>
+    <string name="register">Register</string>
+    <string name="no_information_is_n_currently_available">No information is \n currently available.</string>
 </resources>

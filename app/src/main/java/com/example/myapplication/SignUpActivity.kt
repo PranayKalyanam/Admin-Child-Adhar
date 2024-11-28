@@ -137,7 +137,7 @@ class SignUpActivity : AppCompatActivity() {
             //get a unique  id before saving
             val userId = user.uid
             //save user data in firebase database
-            database.child("user").child(userId).setValue(userModel)
+            database.child("users").child(userId).setValue(userModel)
         } else{
             Log.e("saving_user_data", "Current_user: null")
         }

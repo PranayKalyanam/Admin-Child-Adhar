@@ -8,9 +8,11 @@
     tools:context=".ChildDetailsActivity">
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/childDetailsSaveButton"
+        android:layout_height="match_parent"
+        android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -18,10 +20,11 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="12dp"
             android:layout_marginBottom="8dp"
+            android:padding="4dp"
             android:background="@drawable/profile_text_background"
             android:elevation="3dp"
             android:orientation="vertical">
@@ -58,13 +61,13 @@
                     android:gravity="center_vertical"
                     android:hint="@string/pranay"
                     android:importantForAutofill="no"
-                    android:inputType="text|textMultiLine"
+                    android:inputType="text"
                     android:paddingStart="4dp"
                     android:paddingEnd="4dp"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     android:textStyle="bold"
-                    tools:ignore="LabelFor,TouchTargetSizeCheck" />
+                    tools:ignore="LabelFor,TouchTargetSizeCheck,TextContrastCheck" />
             </LinearLayout>
 
             <LinearLayout
@@ -99,13 +102,13 @@
                     android:gravity="center_vertical"
                     android:hint="@string/kalyanam"
                     android:importantForAutofill="no"
-                    android:inputType="text|textMultiLine"
+                    android:inputType="text"
                     android:paddingStart="4dp"
                     android:paddingEnd="4dp"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     android:textStyle="bold"
-                    tools:ignore="LabelFor,TouchTargetSizeCheck" />
+                    tools:ignore="LabelFor,TouchTargetSizeCheck,TextContrastCheck" />
             </LinearLayout>
 
             <LinearLayout
@@ -140,7 +143,7 @@
                     android:gravity="center_vertical"
                     android:hint="@string/kalyanam_anjaiah"
                     android:importantForAutofill="no"
-                    android:inputType="text|textMultiLine"
+                    android:inputType="text"
                     android:paddingStart="4dp"
                     android:paddingEnd="4dp"
                     android:textColor="@color/black"
@@ -181,7 +184,7 @@
                     android:gravity="center_vertical"
                     android:hint="@string/kalyanam_shylaja"
                     android:importantForAutofill="no"
-                    android:inputType="text|textMultiLine"
+                    android:inputType="text"
                     android:paddingStart="4dp"
                     android:paddingEnd="4dp"
                     android:textColor="@color/black"
@@ -208,7 +211,7 @@
                     android:gravity="center_vertical"
                     android:paddingStart="4dp"
                     android:paddingEnd="2dp"
-                    android:text="@string/mother_name"
+                    android:text="@string/phone_number"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     android:textStyle="bold"
@@ -474,26 +477,42 @@
                     tools:ignore="LabelFor,TouchTargetSizeCheck,TextContrastCheck" />
             </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="8dp"
+            android:padding="4dp"
+            android:background="@drawable/profile_text_background"
+            android:elevation="1dp"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/childDetailsSaveButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/green_border"
+                android:fontFamily="@font/lato_bold"
+                android:text="@string/save_information"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="DuplicateSpeakableTextCheck,TouchTargetSizeCheck" />
+
+
+        </LinearLayout>
+
+
         </LinearLayout>
     </ScrollView>
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/childDetailsSaveButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/green_border"
-        android:fontFamily="@font/lato_bold"
-        android:text="@string/save_information"
-        android:textAllCaps="false"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="DuplicateSpeakableTextCheck" />
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

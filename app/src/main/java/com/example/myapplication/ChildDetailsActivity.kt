@@ -1,11 +1,11 @@
 package com.example.myapplication
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.example.myapplication.databinding.ActivityChildDetailsBinding
 import com.example.myapplication.model.ChildDetailsModel
-import com.example.myapplication.model.LostChildDetailsModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 
@@ -20,11 +20,15 @@ class ChildDetailsActivity : AppCompatActivity() {
     //the familyId to save child details
     private var familyId: String?= null
 
+    // Get the child ID passed from AddChildrenActivity
+    private var childId: String? = null
+
     //Strings to store from edit text
     private var childFirstName:String?=null
     private var childSurName:String?=null
     private var childFatherName:String?=null
     private var childMotherName:String?=null
+    private var childFatherPhone: Int?= null
     private var childDateOfBirth:String?=null
     private var childTimeOfBirth:String?=null
     private var childPlaceOfBirth:String?=null
@@ -32,12 +36,32 @@ class ChildDetailsActivity : AppCompatActivity() {
     private var childDisability:String?=null
     private var childAddress:String?=null
 
-    // Some Extra information for lost children
-    private var childFatherPhone: Int?= null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityChildDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // Retrieve the child ID and child details passed via Intent
+        childId = intent.getStringExtra("child_id")
+        val childDetails = intent.getParcelableExtra<ChildDetailsModel>("child_details_model")
+
+        // Check if the data is not null
+        if(childDetails != null){
+            // Display the child details in the UI
+            binding.childFirstNameEditText.setText(childDetails.firstName)
+            binding.childSurnameEditText.setText(childDetails.lastName)
+            binding.childFatherNameEditText.setText(childDetails.fatherName)
+            binding.childMotherNameEditText.setText(childDetails.motherName)
+            binding.childFatherPhoneEditText.setText(childDetails.fatherPhone.toString())
+            binding.childDateOfBirthEditText.setText(childDetails.dateOfBirth)
+            binding.childPlaceOfBirthEditText.setText(childDetails.placeOfBirth)
+            binding.childTimeOfBirthEditText.setText(childDetails.timeOfBirth)
+            binding.childGenderEditText.setText(childDetails.gender)
+            binding.childDisabilityEditText.setText(childDetails.disability)
+            binding.childAddressEditText.setText(childDetails.permanentAddressOfParents)
+        }
+
 
         // Get familyId from user's data
         val userId = auth.currentUser?.uid
@@ -52,9 +76,14 @@ class ChildDetailsActivity : AppCompatActivity() {
                 }
         }
 
-        binding.childDetailsSaveButton.setOnClickListener {
-            saveChildDetails()
+        if(childId != null){
+            binding.childDetailsSaveButton.setOnClickListener {
+                saveChildDetails()
+            }
+        } else {
+                Toast.makeText(this, "No Child ID received", Toast.LENGTH_SHORT).show()
         }
+
     }
 
     private fun saveChildDetails() {
@@ -95,12 +124,14 @@ class ChildDetailsActivity : AppCompatActivity() {
                 )
 
                 // Save child details to the family node under "children"
-                val childId = database.child("Families").child(familyId!!).child("children").push().key
+//                val childId = database.child("Families").child(familyId!!).child("children").push().key
                 if(childId != null){
-                    database.child("Families").child(familyId!!).child("children").child(childId).setValue(childDetailsModel)
+                    database.child("Families").child(familyId!!).child("children").child(childId!!).setValue(childDetailsModel)
                         .addOnSuccessListener {
-                            // After saving, simulate fingerprint submission
-                            simulateFingerprintSubmission(childId)
+//                            // After saving, simulate fingerprint submission
+//                            simulateFingerprintSubmission(childId!!)
+                            // After saving, navigate to the fingerprint activity
+                            navigateToFingerprintActivity(childId!!, familyId!!)
                         }
                         .addOnFailureListener { e ->
                             Toast.makeText(this, "Failed to save child details: ${e.message}", Toast.LENGTH_SHORT).show()
@@ -110,33 +141,45 @@ class ChildDetailsActivity : AppCompatActivity() {
         }
     }
 
-    private fun simulateFingerprintSubmission(childId: String) {
-        // Simulate fingerprint (use a static key for now)
-        val simulatedFingerprintKey = "sample-fingerprint-key-12345" // Static fingerprint key for simulation
-
-        // Create a map to update the child node with the fingerprint
-        val childUpdates = mapOf(
-            "fingerprint" to simulatedFingerprintKey
-        )
-
-        // Update child node with simulated fingerprint
-        database.child("Families").child(familyId!!).child("children").child(childId).updateChildren(childUpdates)
-            .addOnSuccessListener {
-                val lostChildDetailsModel = LostChildDetailsModel(childFirstName, childSurName, childFatherName, childFatherPhone )
-                // Save lost child information to the LostChildren node
-                database.child("LostChildren").child(childId).setValue(lostChildDetailsModel)
-                    .addOnSuccessListener {
-                        Toast.makeText(this, "Child details saved successfully", Toast.LENGTH_SHORT)
-                            .show()
-                        finish() // Close the activity after saving
-                    }
-                    .addOnFailureListener{
-                            e->
-                        Toast.makeText(this, "Failed to save fingerprint: ${e.message}", Toast.LENGTH_SHORT).show()
-                    }
-            }
-            .addOnFailureListener{ e->
-                Toast.makeText(this, "Failed to save fingerprint: ${e.message}", Toast.LENGTH_SHORT).show()
-            }
+    private fun navigateToFingerprintActivity(childId: String, familyId: String) {
+        // Start FingerprintActivity and pass the child ID for further use
+        val intent =  Intent(this, FingerPrintActivity::class.java)
+        intent.putExtra("child_id", childId)
+        intent.putExtra("family_id", familyId)
+        intent.putExtra("child_first_name", this.childFirstName)
+        intent.putExtra("child_last_name", this.childSurName)
+        intent.putExtra("father_name", this.childFatherName)
+        intent.putExtra("father_phone", this.childFatherPhone)
+        startActivity(intent)
     }
+
+//    private fun simulateFingerprintSubmission(childId: String) {
+//        // Simulate fingerprint (use a static key for now)
+//        val simulatedFingerprintKey = "sample-fingerprint-key-12345" // Static fingerprint key for simulation
+//
+//        // Create a map to update the child node with the fingerprint
+//        val childUpdates = mapOf(
+//            "fingerprint" to simulatedFingerprintKey
+//        )
+//
+//        // Update child node with simulated fingerprint
+//        database.child("Families").child(familyId!!).child("children").child(childId).updateChildren(childUpdates)
+//            .addOnSuccessListener {
+//                val lostChildDetailsModel = LostChildDetailsModel(childFirstName, childSurName, childFatherName, childFatherPhone )
+//                // Save lost child information to the LostChildren node
+//                database.child("LostChildren").child(childId).setValue(lostChildDetailsModel)
+//                    .addOnSuccessListener {
+//                        Toast.makeText(this, "Child details saved successfully", Toast.LENGTH_SHORT)
+//                            .show()
+//                        finish() // Close the activity after saving
+//                    }
+//                    .addOnFailureListener{
+//                            e->
+//                        Toast.makeText(this, "Failed to save fingerprint: ${e.message}", Toast.LENGTH_SHORT).show()
+//                    }
+//            }
+//            .addOnFailureListener{ e->
+//                Toast.makeText(this, "Failed to save fingerprint: ${e.message}", Toast.LENGTH_SHORT).show()
+//            }
+//    }
 }

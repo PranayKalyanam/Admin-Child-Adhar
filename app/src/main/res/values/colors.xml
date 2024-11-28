@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black">#FF000000</color>
+    <color name="gray">#747474</color>
     <color name="light_black">#C1222222</color>
     <color name="white">#FFFFFFFF</color>
     <color name="light_silver">#E4E4E4</color>
@@ -9,6 +10,12 @@
     <color name="blue_mid">#114BC6</color>
     <color name="blue_end">#071DB3</color>
     <color name="green_text">#43A047</color>
+    <color name="green">#29DA2E</color>
+    <color name="start_green">#53DC57</color>
+    <color name="end_green">#10BA14</color>
     <color name="green_hover">#E489E98D</color>
     <color name="light_green">#C4A5D5A6</color>
+    <color name="start_red">#C4EB4258</color>
+    <color name="center_red">#C4CB273C</color>
+    <color name="end_red">#C4D60924</color>
 </resources>

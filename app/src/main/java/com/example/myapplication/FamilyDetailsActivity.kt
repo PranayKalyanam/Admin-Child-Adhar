@@ -83,6 +83,7 @@ class FamilyDetailsActivity : AppCompatActivity() {
         database.child("users").child(userId).updateChildren(userUpdates)
             .addOnSuccessListener {
                 Toast.makeText(this, "User linked to family successfully", Toast.LENGTH_SHORT).show()
+                finish()
             }
             .addOnFailureListener { e ->
                 Toast.makeText(this, "Failed to update user: ${e.message}", Toast.LENGTH_SHORT).show()

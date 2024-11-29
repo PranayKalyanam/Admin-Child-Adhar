@@ -23,6 +23,7 @@ class FingerPrintActivity : AppCompatActivity() {
     private var childFirstName:String?= null
     private var childLastName:String?= null
     private var childFatherName:String?= null
+    private var childMotherName:String?= null
     private var childFatherPhone:Int?= null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,9 +34,12 @@ class FingerPrintActivity : AppCompatActivity() {
         //retrieve data from previous activity
         childId = intent.getStringExtra("child_id")
         familyId = intent.getStringExtra("family_id")
+
+        //Retrieve child details from previous activity
         childFirstName = intent.getStringExtra("child_first_name")
         childLastName = intent.getStringExtra("child_last_name")
         childFatherName = intent.getStringExtra("father_name")
+        childMotherName = intent.getStringExtra("mother_name")
         childFatherPhone = intent.getIntExtra("father_phone", -1)
 
         if(childId != null && familyId != null){
@@ -62,7 +66,7 @@ class FingerPrintActivity : AppCompatActivity() {
         database.child("Families").child(familyId!!).child("children")
             .child(childId).updateChildren(childUpdates)
             .addOnSuccessListener {
-                val lostChildDetailsModel = LostChildDetailsModel(childFirstName, childLastName, childFatherName, childFatherPhone )
+                val lostChildDetailsModel = LostChildDetailsModel(childFirstName, childLastName, childFatherName, childMotherName, childFatherPhone )
                 // Save lost child information to the LostChildren node
                 database.child("LostChildren").child(childId).setValue(lostChildDetailsModel)
                     .addOnSuccessListener {

@@ -40,6 +40,7 @@ class AddChildrenActivity : AppCompatActivity() {
                         Toast.makeText(this, "No family associated with this user", Toast.LENGTH_SHORT).show()
                         val intent = Intent(this, FamilyDetailsActivity::class.java)
                         startActivity(intent)
+                        finish()
                     } else {
                         fetchChildrenDetails()
                     }
